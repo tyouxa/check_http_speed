@@ -1,0 +1,20 @@
+version: '2'
+services:
+  exporter:
+    image: prom/node-exporter
+    container_name: prometheus-exporter
+    hostname: prometheus-exporter
+    ports:
+    - "9100:9100"
+    volumes:
+      - "${PWD}/data:/opt/node-exporter/data"
+    command: --collector.textfile.directory /opt/node-exporter/data --no-collector.conntrack --no-collector.cpu --no-collector.bcache  --no-collector.arp --no-collector.diskstats --no-collector.edac --no-collector.entropy --no-collector.filefd --no-collector.filesystem --no-collector.hwmon --no-collector.infiniband --no-collector.ipvs --no-collector.loadavg --no-collector.mdadm --no-collector.meminfo --no-collector.netdev --no-collector.netstat --no-collector.sockstat --no-collector.stat --no-collector.uname --no-collector.vmstat --no-collector.wifi --no-collector.xfs --no-collector.zfs --no-collector.timex
+
+  http_checker:
+    build:
+      context: ./http_checker
+    container_name: http_checker
+    hostname: http_checker
+    command: python3 /opt/http_checker/check_all_http.py
+    volumes:
+      - "${PWD}/data:/opt/http_checker/data"
