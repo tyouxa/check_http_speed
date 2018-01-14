@@ -65,7 +65,7 @@ while 1 == True:
         conn_time=round(conn_time, 4)
         starttransfer_time=round(starttransfer_time, 4)
         total_time=round(total_time, 4)
-        check_item="http_response_dns_time_ms{domain=\""+url+"\", source=\""+check_source+"\"} "+str(dns_time)+"\nhttp_response_conn_time_ms{domain=\""+url+"\", source=\""+check_source+"\"} "+str(conn_time)+"\nhttp_response_starttransfer_time_ms{domain=\""+url+"\", source=\""+check_source+"\"} "+str(starttransfer_time)+"\nhttp_response_total_time_ms{domain=\""+url+"\", source=\""+check_source+"\"} "+str(total_time)+"\n"
+        check_item="http_response_dns_time_ms{domain=\""+url+"\",source=\""+check_source+"\"} "+str(dns_time)+"\nhttp_response_conn_time_ms{domain=\""+url+"\",source=\""+check_source+"\"} "+str(conn_time)+"\nhttp_response_starttransfer_time_ms{domain=\""+url+"\",source=\""+check_source+"\"} "+str(starttransfer_time)+"\nhttp_response_total_time_ms{domain=\""+url+"\",source=\""+check_source+"\"} "+str(total_time)+"\n"
       
         check_results.append(check_item)
 
