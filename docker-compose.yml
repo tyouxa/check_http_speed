@@ -5,7 +5,7 @@ services:
     container_name: prometheus-exporter
     hostname: prometheus-exporter
     ports:
-    - "9100:9100"
+    - "9200:9100"
     restart: always
     volumes:
       - "${PWD}/data:/opt/node-exporter/data"
@@ -16,6 +16,8 @@ services:
       context: ./http_checker
     container_name: http_checker
     hostname: http_checker
+    environment:
+    - CHECK_SOURCE=""
     restart: always
     command: python3 /opt/http_checker/check_all_http.py
     volumes:
